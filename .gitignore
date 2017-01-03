@@ -1,3 +1,6 @@
+*.swp
+Extra/backup
+
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
@@ -18,7 +21,6 @@ ExportedObj/
 *.booproj
 *.svd
 
-
 # Unity3D generated meta files
 *.pidb.meta
 
@@ -27,7 +29,6 @@ sysinfo.txt
 
 # Builds
 *.apk
-*.unitypackage
 
 # =========================
 # Operating System Files
