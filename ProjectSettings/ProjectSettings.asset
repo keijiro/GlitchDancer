@@ -9,7 +9,7 @@ PlayerSettings:
   defaultScreenOrientation: 4
   targetDevice: 2
   useOnDemandResources: 0
-  accelerometerFrequency: 60
+  accelerometerFrequency: 0
   companyName: Keijiro
   productName: GlitchDancer
   defaultCursor: {fileID: 0}
@@ -96,7 +96,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleIdentifier: com.Company.ProductName
+  bundleIdentifier: jp.keijiro.glitchdancer
   bundleVersion: 1.0
   preloadedAssets: []
   metroEnableIndependentInputSource: 0
@@ -189,7 +189,10 @@ PlayerSettings:
       m_Width: 128
       m_Height: 128
   m_BuildTargetBatching: []
-  m_BuildTargetGraphicsAPIs: []
+  m_BuildTargetGraphicsAPIs:
+  - m_BuildTarget: iOSSupport
+    m_APIs: 10000000
+    m_Automatic: 0
   webPlayerTemplate: APPLICATION:Default
   m_TemplateCustomTags: {}
   wiiUTitleID: 0005000011000000
@@ -427,9 +430,13 @@ PlayerSettings:
   - PS4::ScriptingBackend
   - Standalone::ScriptingBackend
   - WebPlayer::ScriptingBackend
+  - iOS::Architecture
+  - iOS::ScriptingBackend
   PS4::ScriptingBackend: 0
   Standalone::ScriptingBackend: 0
   WebPlayer::ScriptingBackend: 0
+  iOS::Architecture: 0
+  iOS::ScriptingBackend: 0
   boolPropertyNames:
   - Android::VR::enable
   - Metro::VR::enable

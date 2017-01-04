@@ -38,7 +38,7 @@ void vert(inout appdata_full data)
     // Attribute modifiers
     half speed = length(V);
 
-    half width = _LineWidth.x * data.vertex.z * (1 - data.vertex.y);
+    half width = _LineWidth.x * data.vertex.z;// * (1 - data.vertex.y);
     width *= saturate((speed - _LineWidth.y) * _LineWidth.z);
 
     half intensity = saturate((speed - _CutoffSpeed) * _SpeedToIntensity);
