@@ -16,6 +16,7 @@ struct v2f
     float3 texcoord : TEXCOORD0;
     half3 normal : NORMAL;
     half4 tangent : TANGENT;
+    float psize : PSIZE;
 };
 
 struct FragmentOutput
@@ -36,6 +37,8 @@ v2f vert(appdata v)
     o.normal = UnityObjectToWorldNormal(v.normal);
     // TANGENT <= World tangent
     o.tangent = half4(UnityObjectToWorldDir(v.tangent.xyz), v.tangent.w);
+    // Point size is always 1.0
+    o.psize = 1;
     return o;
 }
 
