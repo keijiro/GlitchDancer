@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace GlitchDancer
 {
@@ -61,53 +60,6 @@ namespace GlitchDancer
         #endregion
 
         #region MonoBehaviour Functions
-
-        IEnumerator Start()
-        {
-            while (true)
-            {
-                yield return new WaitForSeconds(1);
-
-                {
-                    _lineColor = Color.black;
-                    _fillOpacity = 0;
-                    _lineOpacity = 0;
-                }
-
-                yield return new WaitForSeconds(1);
-
-                _fillOpacity = 1;
-                _lineOpacity = 1;
-
-                {
-                    var hue = Random.value;
-                    var hue2 = (hue + Random.Range(1.0f / 3, 2.0f / 3)) % 1;
-                    _darkColor = Color.HSVToRGB(hue, 1, 0.4f);
-                    _lightColor = Color.HSVToRGB(hue2, 1, 1);
-                    _lineColor = Color.HSVToRGB(hue2, 1, 0.8f);
-                }
-
-                yield return new WaitForSeconds(1);
-
-                {
-                    var hue = Random.value;
-                    var sat = Random.value;
-                    _darkColor = Color.HSVToRGB(hue, sat, 0.4f);
-                    _lightColor = Color.HSVToRGB(hue, sat, 1);
-                    _lineColor = Color.black;
-                }
-
-                yield return new WaitForSeconds(1);
-
-                {
-                    var hue = Random.value;
-                    var sat = Random.value;
-                    _darkColor = Color.HSVToRGB(hue, sat, 1);
-                    _lightColor = Color.HSVToRGB(hue, sat, 0.4f);
-                    _lineColor = Color.white;
-                }
-            }
-        }
 
         void OnDestroy()
         {
