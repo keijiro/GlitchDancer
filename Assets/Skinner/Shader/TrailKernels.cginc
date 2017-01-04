@@ -52,7 +52,7 @@ float4 UpdatePositionFragment(v2f_img i) : SV_Target
 
         // Apply the velocity cap.
         float lv = max(length(v), 0.001);
-        v = v / lv * min(lv, _SpeedLimit);
+        v = v * min(lv, _SpeedLimit) / lv;
 
         // Update the position with the velocity.
         p += v * unity_DeltaTime.x;

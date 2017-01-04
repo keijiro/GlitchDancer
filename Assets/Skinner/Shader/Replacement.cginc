@@ -16,7 +16,9 @@ struct v2f
     float3 texcoord : TEXCOORD0;
     half3 normal : NORMAL;
     half4 tangent : TANGENT;
+#if defined(SHADER_API_METAL) || defined(SHADER_API_VULKAN)
     float psize : PSIZE;
+#endif
 };
 
 struct FragmentOutput
@@ -37,8 +39,10 @@ v2f vert(appdata v)
     o.normal = UnityObjectToWorldNormal(v.normal);
     // TANGENT <= World tangent
     o.tangent = half4(UnityObjectToWorldDir(v.tangent.xyz), v.tangent.w);
-    // Point size is always 1.0
+#if defined(SHADER_API_METAL) || defined(SHADER_API_VULKAN)
+    // Metal/Vulkan: Point size should be explicitly given.
     o.psize = 1;
+#endif
     return o;
 }
 
