@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 namespace GlitchDancer
 {
@@ -13,28 +14,42 @@ namespace GlitchDancer
             set { _lineColor = value; }
         }
 
-        [SerializeField] Color _lineColor = Color.black;
+        [SerializeField, ColorUsage(false)] Color _lineColor = Color.black;
 
-        public Color backgroundColor {
-            get { return _backgroundColor; }
-            set { _backgroundColor = value; }
+        public float lineOpacity {
+            get { return _lineOpacity; }
+            set { _lineOpacity = value; }
         }
 
-        [SerializeField] Color _backgroundColor = new Color(1, 1, 1, 0);
+        [SerializeField, Range(0, 1)] float _lineOpacity = 1;
 
-        public float lowThreshold {
-            get { return _lowThreshold; }
-            set { _lowThreshold = value; }
+        public Color darkColor {
+            get { return _darkColor; }
+            set { _darkColor = value; }
         }
 
-        [SerializeField, Range(0, 1)] float _lowThreshold = 0.05f;
+        [SerializeField, ColorUsage(false)] Color _darkColor = Color.black;
 
-        public float highThreshold {
-            get { return _highThreshold; }
-            set { _highThreshold = Mathf.Max(_lowThreshold, value); }
+        public Color lightColor {
+            get { return _lightColor; }
+            set { _lightColor = value; }
         }
 
-        [SerializeField, Range(0, 1)] float _highThreshold = 0.5f;
+        [SerializeField, ColorUsage(false)] Color _lightColor = Color.white;
+
+        public float fillOpacity {
+            get { return _fillOpacity; }
+            set { _fillOpacity = value; }
+        }
+
+        [SerializeField, Range(0, 1)] float _fillOpacity = 0;
+
+        public float glitch {
+            get { return _glitch; }
+            set { _glitch = value; }
+        }
+
+        [SerializeField, Range(0, 1)] float _glitch;
 
         #endregion
 
@@ -47,6 +62,53 @@ namespace GlitchDancer
 
         #region MonoBehaviour Functions
 
+        IEnumerator Start()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(1);
+
+                {
+                    _lineColor = Color.black;
+                    _fillOpacity = 0;
+                    _lineOpacity = 0;
+                }
+
+                yield return new WaitForSeconds(1);
+
+                _fillOpacity = 1;
+                _lineOpacity = 1;
+
+                {
+                    var hue = Random.value;
+                    var hue2 = (hue + Random.Range(1.0f / 3, 2.0f / 3)) % 1;
+                    _darkColor = Color.HSVToRGB(hue, 1, 0.4f);
+                    _lightColor = Color.HSVToRGB(hue2, 1, 1);
+                    _lineColor = Color.HSVToRGB(hue2, 1, 0.8f);
+                }
+
+                yield return new WaitForSeconds(1);
+
+                {
+                    var hue = Random.value;
+                    var sat = Random.value;
+                    _darkColor = Color.HSVToRGB(hue, sat, 0.4f);
+                    _lightColor = Color.HSVToRGB(hue, sat, 1);
+                    _lineColor = Color.black;
+                }
+
+                yield return new WaitForSeconds(1);
+
+                {
+                    var hue = Random.value;
+                    var sat = Random.value;
+                    _darkColor = Color.HSVToRGB(hue, sat, 1);
+                    _lightColor = Color.HSVToRGB(hue, sat, 0.4f);
+                    _lineColor = Color.white;
+                }
+            }
+        }
+
         void OnDestroy()
         {
             if (_material != null)
@@ -54,11 +116,6 @@ namespace GlitchDancer
                     Destroy(_material);
                 else
                     DestroyImmediate(_material);
-        }
-
-        void OnValidate()
-        {
-            _highThreshold = Mathf.Max(_lowThreshold, _highThreshold);
         }
 
         void OnRenderImage(RenderTexture source, RenderTexture destination)
@@ -69,9 +126,16 @@ namespace GlitchDancer
                 _material.hideFlags = HideFlags.DontSave;
             }
 
-            _material.SetColor("_LineColor", _lineColor);
-            _material.SetColor("_BGColor", _backgroundColor);
-            _material.SetVector("_Threshold", new Vector2(_lowThreshold, _highThreshold));
+            var color = _lineColor;
+            color.a = _lineOpacity;
+            _material.SetColor("_LineColor", color);
+
+            color = _darkColor;
+            color.a = _fillOpacity;
+            _material.SetColor("_Color1", color);
+            _material.SetColor("_Color2", _lightColor);
+
+            _material.SetFloat("_Glitch", _glitch);
 
             Graphics.Blit(source, destination, _material);
         }
