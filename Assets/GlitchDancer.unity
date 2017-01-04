@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.97049683, g: 0.59068376, b: 0.16523275, a: 1}
+  m_IndirectSpecularColor: {r: 0.9704744, g: 0.5900761, b: 0.16438091, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -387,7 +387,6 @@ GameObject:
   - 124: {fileID: 638370079}
   - 81: {fileID: 638370078}
   - 114: {fileID: 638370076}
-  - 114: {fileID: 638370075}
   - 114: {fileID: 638370077}
   m_Layer: 0
   m_Name: Main Camera
@@ -396,18 +395,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &638370075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 638370074}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddf942a5a0dd1e540b17369cca027d33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _shader: {fileID: 4800000, guid: e88d9676b25fe74498cae300ad8914de, type: 3}
 --- !u!114 &638370076
 MonoBehaviour:
   m_ObjectHideFlags: 0

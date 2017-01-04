@@ -7,7 +7,7 @@
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" "NormalDrawer"="Simple" }
+        Tags { "RenderType"="Opaque" }
 
         CGPROGRAM
 

@@ -26,7 +26,7 @@ Shader "Skinner/Trail (CelLike)"
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" "NormalDrawer"="Trail" }
+        Tags { "RenderType"="Opaque" }
         Cull Off
         CGPROGRAM
         #pragma surface surf CelLike2 vertex:vert nolightmap fullforwardshadows
