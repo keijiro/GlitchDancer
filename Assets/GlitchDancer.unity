@@ -464,7 +464,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.9490197, g: 0.53333336, b: 0.12941177, a: 1}
+  m_BackGroundColor: {r: 0.95, g: 0.68692595, b: 0.13299999, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -969,11 +969,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aab5096e7cf8f054691b82796e3bba1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _scheme: 0
+  _hue: 0
   _postEffects: {fileID: 638370075}
-  _floor:
-  - {fileID: 1605516001}
-  _body:
-  - {fileID: 1963356040}
+  _floor: {fileID: 1605516001}
+  _body: {fileID: 1963356040}
   _effects:
   - {fileID: 51745474}
   - {fileID: 623140920}

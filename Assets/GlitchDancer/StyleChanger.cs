@@ -1,59 +1,119 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace GlitchDancer
 {
     public class StyleChanger : MonoBehaviour
     {
+        #region Public properties
+
+        public float scheme {
+            set { _scheme = value; _modified = true; }
+        }
+
+        [SerializeField, Range(0, 1)] float _scheme;
+
+        public float hue {
+            set { _hue = value ; _modified = true; }
+        }
+
+        [SerializeField, Range(0, 1)] float _hue;
+
+        bool _modified = true;
+
+        #endregion
+
+        #region Editor-only settings
+
+        [Space]
         [SerializeField] PostEffects _postEffects;
-        [SerializeField] Renderer[] _floor;
-        [SerializeField] Renderer[] _body;
+        [SerializeField] Renderer _floor;
+        [SerializeField] Renderer _body;
         [SerializeField] Renderer[] _effects;
 
-        IEnumerator Start()
+        #endregion
+
+        #region MonoBehaviour functions
+
+        void OnValidate()
         {
-            var fx = _postEffects;
-            var cam = Camera.main;
-            const float interval = 2;
+            _modified = true;
+        }
 
-            while (true)
+        void Update()
+        {
+            if (!_modified) return;
+
+            // Triad hue set.
+            var hue1 = (_hue + 0.113f) % 1;
+            var hue2 = (_hue + 0.380f) % 1;
+            var hue3 = (_hue + 0.750f) % 1;
+
+            // Update material colors.
+            if (_scheme < 0.25f)
             {
-                var hue = Random.value;
-                var hue2 = (hue + 0.18f) % 1;
-                var hue3 = (hue + 0.42f) % 1;
+                // Set colors based on the hue set.
+                Camera.main.backgroundColor = Color.HSVToRGB(hue1, 0.86f, 0.95f);
 
-                fx.lineColor = Color.black;
+                _floor.material.color = Color.HSVToRGB(hue2, 0.54f, 0.49f);
+                _body.material.color = Color.HSVToRGB(hue2, 0.80f, 0.51f);
+
+                foreach (var renderer in _effects)
+                    renderer.material.SetFloat("_BaseHue", hue3);
+            }
+            else
+            {
+                // Set placeholder colors.
+                Camera.main.backgroundColor = new Color(1, 0.6f, 0);
+
+                _floor.material.color = new Color(0, 0.5f, 0);
+                _body.material.color = new Color(0, 0, 0.5f);
+
+                foreach (var renderer in _effects)
+                    renderer.material.SetFloat("_BaseHue", 0);
+            }
+
+            // Set the post effects settings.
+            var fx = _postEffects;
+
+            if (_scheme < 0.25f)
+            {
+                // Turn off filling.
                 fx.fillOpacity = 0;
                 fx.lineOpacity = 0.2f;
-
-                foreach (var o in _floor)
-                    o.material.color = Color.HSVToRGB(hue, 0.8f, 0.5f);
-
-                foreach (var o in _body)
-                    o.material.color = Color.HSVToRGB(hue, 0.5f, 0.5f);
-
-                cam.backgroundColor = Color.HSVToRGB(hue2, 0.9f, 0.8f);
-
-                foreach (var o in _effects)
-                    o.material.SetFloat("_BaseHue", hue3);
-
-                yield return new WaitForSeconds(interval);
-
+                fx.lineColor = Color.black;
+            }
+            else
+            {
+                // Make the effect opaque.
                 fx.fillOpacity = 1;
                 fx.lineOpacity = 1;
 
-                fx.darkColor = Color.HSVToRGB(hue, 1, 0.3f);
-                fx.lightColor = Color.HSVToRGB(hue3, 0.7f, 1);
-                fx.lineColor = Color.HSVToRGB(hue3, 0.7f, 1);
-
-                yield return new WaitForSeconds(interval);
-
-                fx.darkColor = Color.HSVToRGB(hue2, 1, 0.3f);
-                fx.lightColor = Color.HSVToRGB(hue, 0.7f, 1);
-                fx.lineColor = Color.HSVToRGB(hue2, 1, 0.3f);
-
-                yield return new WaitForSeconds(interval);
+                if (_scheme < 0.5f)
+                {
+                    // Tone 1
+                    fx.darkColor = Color.HSVToRGB(hue2, 1, 0.3f);
+                    fx.lightColor = Color.HSVToRGB(hue3, 0.7f, 1);
+                    fx.lineColor = Color.HSVToRGB(hue3, 0.7f, 1);
+                }
+                else if (_scheme < 0.75f)
+                {
+                    // Tone 2
+                    fx.darkColor = Color.HSVToRGB(hue1, 1, 0.3f);
+                    fx.lightColor = Color.HSVToRGB(hue2, 0.7f, 1);
+                    fx.lineColor = Color.HSVToRGB(hue1, 1, 0.3f);
+                }
+                else
+                {
+                    // Black and white.
+                    fx.darkColor = Color.HSVToRGB(hue1, 0, 0.7f);
+                    fx.lightColor = Color.HSVToRGB(hue2, 0, 1);
+                    fx.lineColor = Color.HSVToRGB(hue1, 0, 0.1f);
+                }
             }
+
+            _modified = false;
         }
+
+        #endregion
     }
 }
