@@ -1,4 +1,4 @@
-Shader "Hidden/GlitchDancer/PostEffects"
+Shader "Hidden/Glitch Dancer/PostEffects"
 {
     Properties
     {

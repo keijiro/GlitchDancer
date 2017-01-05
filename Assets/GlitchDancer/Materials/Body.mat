@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Body
-  m_Shader: {fileID: 4800000, guid: 239b50b71d5708c4094b2f3d76b3b772, type: 3}
+  m_Shader: {fileID: 4800000, guid: 373f31ad28aeae44abd269f2c6549f2c, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
@@ -77,6 +77,9 @@ Material:
         name: _Cutoff
       second: 0.5
     - first:
+        name: _Deform
+      second: 1.55
+    - first:
         name: _DetailNormalMapScale
       second: 1
     - first:
@@ -103,6 +106,9 @@ Material:
     - first:
         name: _Parallax
       second: 0.02
+    - first:
+        name: _Scale
+      second: 1
     - first:
         name: _SmoothnessTextureChannel
       second: 0
