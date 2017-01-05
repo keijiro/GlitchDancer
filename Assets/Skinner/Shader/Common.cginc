@@ -101,7 +101,6 @@ half3 ColorAnimationSimple(float id, half intensity)
     return rgb * (_Brightness + _BrightnessOffs * intensity);
 }
 
-
 // Scale animation used in the particle shaders.
 float ParticleScale(float id, half life, half speed, half2 params)
 {
