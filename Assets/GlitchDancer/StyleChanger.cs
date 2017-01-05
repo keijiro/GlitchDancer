@@ -91,23 +91,23 @@ namespace GlitchDancer
                 if (_scheme < 0.5f)
                 {
                     // Tone 1
-                    fx.darkColor = Color.HSVToRGB(hue2, 1, 0.3f);
-                    fx.lightColor = Color.HSVToRGB(hue3, 0.7f, 1);
-                    fx.lineColor = Color.HSVToRGB(hue3, 0.7f, 1);
-                }
-                else if (_scheme < 0.75f)
-                {
-                    // Tone 2
                     fx.darkColor = Color.HSVToRGB(hue1, 1, 0.3f);
                     fx.lightColor = Color.HSVToRGB(hue2, 0.7f, 1);
                     fx.lineColor = Color.HSVToRGB(hue1, 1, 0.3f);
                 }
+                else if (_scheme < 0.75f)
+                {
+                    // Tone 2
+                    fx.darkColor = Color.HSVToRGB(hue2, 1, 0.3f);
+                    fx.lightColor = Color.HSVToRGB(hue3, 0.7f, 1);
+                    fx.lineColor = Color.HSVToRGB(hue3, 0.7f, 1);
+                }
                 else
                 {
                     // Black and white.
-                    fx.darkColor = Color.HSVToRGB(hue1, 0, 0.7f);
-                    fx.lightColor = Color.HSVToRGB(hue2, 0, 1);
-                    fx.lineColor = Color.HSVToRGB(hue1, 0, 0.1f);
+                    fx.darkColor = Color.white * Mathf.Lerp(0.7f, 0.3f, _hue);
+                    fx.lightColor = Color.white * (1 - _hue);
+                    fx.lineColor = Color.white * Mathf.Lerp(0.1f, 0.8f, _hue);
                 }
             }
 
