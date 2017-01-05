@@ -1,10 +1,8 @@
 // Custom surface shader for Skinner Trail
-Shader "Skinner/Trail (CelLike)"
+Shader "Skinner/Trail (Cel-Like)"
 {
     Properties
     {
-        _Albedo("Albedo", Color) = (0.5, 0.5, 0.5)
-
         [Header(Self Illumination)]
         _BaseHue("Base Hue", Range(0, 1)) = 0
         _HueRandomness("Hue Randomness", Range(0, 1)) = 0.2
@@ -29,9 +27,10 @@ Shader "Skinner/Trail (CelLike)"
         Tags { "RenderType"="Opaque" }
         Cull Off
         CGPROGRAM
-        #pragma surface surf CelLike2 vertex:vert nolightmap fullforwardshadows addshadow
+        #pragma surface surf Unlit vertex:vert nolightmap addshadow
         #pragma target 3.0
         #include "TrailSurfaceCelLike.cginc"
+        #include "Unlit.cginc"
         ENDCG
     }
 }

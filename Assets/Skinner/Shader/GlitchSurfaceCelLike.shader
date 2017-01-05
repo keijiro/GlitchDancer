@@ -1,10 +1,8 @@
 // Custom surface shader for Skinner Glitch
-Shader "Skinner/Glitch (CelLike)"
+Shader "Skinner/Glitch (Cel-Like)"
 {
     Properties
     {
-        _Albedo("Albedo", Color) = (0.5, 0.5, 0.5)
-
         [Header(Self Illumination)]
         _BaseHue("Base Hue", Range(0, 1)) = 0
         _HueRandomness("Hue Randomness", Range(0, 1)) = 0.2
@@ -23,9 +21,10 @@ Shader "Skinner/Glitch (CelLike)"
         Tags { "RenderType"="Opaque" }
         Cull Off
         CGPROGRAM
-        #pragma surface surf CelLike2 vertex:vert nolightmap fullforwardshadows addshadow
+        #pragma surface surf Unlit vertex:vert nolightmap addshadow
         #pragma target 3.0
         #include "GlitchSurfaceCelLike.cginc"
+        #include "Unlit.cginc"
         ENDCG
     }
 }

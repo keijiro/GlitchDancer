@@ -13,7 +13,7 @@ Shader "Glitch Dancer/Cel-Like Split Skin"
 
         #include "Common.cginc"
 
-        #pragma surface surf CelLike vertex:vert nolightmap fullforwardshadows addshadow
+        #pragma surface surf CelLike vertex:vert nolightmap addshadow
         #pragma target 3.0
 
         fixed3 _Color;
@@ -31,9 +31,10 @@ Shader "Glitch Dancer/Cel-Like Split Skin"
             float3 T = v.tangent.xyz;
             float3 B = cross(N, T) * v.tangent.w;
 
-            float3 center = P + T * v.texcoord.x + B * v.texcoord.y;
+            float3 C = P + T * v.texcoord.x + B * v.texcoord.y;
+            float S = _Scale + abs(_Scale - 1) * sin(_Time.y * 6 + P.x * 2) * 0.5;
 
-            v.vertex.xyz = lerp(center, P, _Scale);
+            v.vertex.xyz = lerp(C, P, S);
         }
 
         void surf(Input IN, inout SurfaceOutput o)

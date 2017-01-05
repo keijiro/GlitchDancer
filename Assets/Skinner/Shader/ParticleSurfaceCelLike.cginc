@@ -1,6 +1,5 @@
 // Custom surface shader for Skinner Particle
 #include "Common.cginc"
-#include "CelLikeLighting.cginc"
 
 // Buffers from the animation kernels
 sampler2D _PositionBuffer;

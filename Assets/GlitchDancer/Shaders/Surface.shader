@@ -13,7 +13,7 @@
 
         #include "Common.cginc"
 
-        #pragma surface surf CelLike nolightmap fullforwardshadows addshadow
+        #pragma surface surf CelLike nolightmap addshadow
         #pragma target 3.0
 
         sampler2D _MainTex;
