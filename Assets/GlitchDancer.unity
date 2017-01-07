@@ -1605,8 +1605,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wiringNodePosition: {x: 24, y: 480}
-  _targetComponent: {fileID: 0}
-  _targetGameObject: {fileID: 51745472}
+  _targetComponent: {fileID: 51745474}
+  _targetGameObject: {fileID: 0}
 --- !u!1 &715556264
 GameObject:
   m_ObjectHideFlags: 0
@@ -2201,8 +2201,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wiringNodePosition: {x: 24, y: 240}
-  _targetComponent: {fileID: 0}
-  _targetGameObject: {fileID: 969399335}
+  _targetComponent: {fileID: 969399337}
+  _targetGameObject: {fileID: 0}
 --- !u!4 &971972690
 Transform:
   m_ObjectHideFlags: 0
@@ -2320,9 +2320,9 @@ Light:
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
-    m_Bias: 0.05
+    m_Bias: 0
     m_NormalBias: 0
-    m_NearPlane: 0.2
+    m_NearPlane: 1
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
@@ -3566,8 +3566,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wiringNodePosition: {x: 24, y: 720}
-  _targetComponent: {fileID: 0}
-  _targetGameObject: {fileID: 623140918}
+  _targetComponent: {fileID: 623140920}
+  _targetGameObject: {fileID: 0}
 --- !u!4 &1773734844
 Transform:
   m_ObjectHideFlags: 0
