@@ -154,7 +154,11 @@ namespace Skinner
                 _renderer = new RendererAdapter(gameObject, _defaultMaterial);
 
             // Update the custom property block.
+            #if UNITY_EDITOR_WIN || UNITY_STANDALONE
+            var block = GetComponent<Renderer>().material;
+            #else
             var block = _renderer.propertyBlock;
+            #endif
             block.SetTexture("_PositionBuffer", _kernel.GetLastBuffer(Buffers.Position));
             block.SetFloat("_EdgeThreshold", _edgeThreshold);
             block.SetFloat("_AreaThreshold", _areaThreshold);
@@ -162,6 +166,10 @@ namespace Skinner
             block.SetFloat("_BufferOffset", Time.frameCount);
 
             _renderer.Update(_template.mesh);
+
+            #if UNITY_EDITOR_WIN || UNITY_STANDALONE
+            block.SetPass(0);
+            #endif
         }
 
         #endregion

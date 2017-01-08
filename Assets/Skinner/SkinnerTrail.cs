@@ -195,7 +195,11 @@ namespace Skinner
                 _renderer = new RendererAdapter(gameObject, _defaultMaterial);
 
             // Update the custom property block.
+            #if UNITY_EDITOR_WIN || UNITY_STANDALONE
+            var block = GetComponent<Renderer>().material;
+            #else
             var block = _renderer.propertyBlock;
+            #endif
             block.SetTexture("_PreviousPositionBuffer", _kernel.GetWorkingBuffer(Buffers.Position));
             block.SetTexture("_PreviousVelocityBuffer", _kernel.GetWorkingBuffer(Buffers.Velocity));
             block.SetTexture("_PreviousOrthnormBuffer", _kernel.GetWorkingBuffer(Buffers.Orthnorm));
@@ -206,6 +210,10 @@ namespace Skinner
             block.SetFloat("_RandomSeed", _randomSeed);
 
             _renderer.Update(_template.mesh);
+
+            #if UNITY_EDITOR_WIN || UNITY_STANDALONE
+            block.SetPass(0);
+            #endif
         }
 
         #endregion
