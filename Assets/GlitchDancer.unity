@@ -133,6 +133,81 @@ MonoBehaviour:
   _wiringNodePosition: {x: -168, y: -48}
   _target: {fileID: 2007602246}
   _propertyName: hue
+--- !u!1 &28648484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 28648485}
+  - 114: {fileID: 28648486}
+  m_Layer: 0
+  m_Name: Threshold
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &28648485
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 28648484}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1017293610}
+  m_RootOrder: 28
+--- !u!114 &28648486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 28648484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e02d4ac2ec87d643a32c5b25174f509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wiringNodePosition: {x: 312, y: -60}
+  _threshold: 0.01
+  _delayToOff: 0
+  _onEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 187845417}
+        m_MethodName: Enable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Klak.Wiring.NodeBase+VoidEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _offEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 187845417}
+        m_MethodName: Disable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Klak.Wiring.NodeBase+VoidEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &51745472
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,6 +549,49 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Klak.Wiring.NodeBase+FloatEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1 &187845415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 187845416}
+  - 114: {fileID: 187845417}
+  m_Layer: 0
+  m_Name: Active Status Out
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &187845416
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 187845415}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1017293610}
+  m_RootOrder: 29
+--- !u!114 &187845417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 187845415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64dd8887208f8424e9be10f9fffd0adf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wiringNodePosition: {x: 504, y: -60}
+  _targetComponent: {fileID: 1963356040}
+  _targetGameObject: {fileID: 0}
 --- !u!1 &190939882
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,7 +1006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25192fab7a3623945ae7847e45b0ffaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wiringNodePosition: {x: -360, y: 24}
+  _wiringNodePosition: {x: 120, y: -120}
   _interpolator:
     _interpolationType: 2
     _interpolationSpeed: 50
@@ -896,6 +1014,17 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1320843110}
+        m_MethodName: set_input
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 28648486}
         m_MethodName: set_input
         m_Mode: 0
         m_Arguments:
@@ -1003,7 +1132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aef7aa229e49c948894b8e81f4501f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wiringNodePosition: {x: 24, y: 24}
+  _wiringNodePosition: {x: 504, y: -120}
   _target: {fileID: 1963356040}
   _propertyName: _Scale
 --- !u!4 &449005318
@@ -1248,7 +1377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wiringNodePosition: {x: -168, y: 240}
   _threshold: 0.002
-  _delayToOff: 2
+  _delayToOff: 1
   _onEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1789,6 +1918,10 @@ MonoBehaviour:
   _replacementShader: {fileID: 4800000, guid: 3731eb6d7ec045947affb03711bfbc08, type: 3}
   _placeholderMaterial: {fileID: 2100000, guid: ea72285045ca83441b0e1dcdc29cd32c,
     type: 2}
+--- !u!4 &758469497 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400000, guid: 427d34d6970bfe74f99a26b6745ccbc5, type: 3}
+  m_PrefabInternal: {fileID: 1350693598}
 --- !u!1 &806059872
 GameObject:
   m_ObjectHideFlags: 0
@@ -2271,6 +2404,8 @@ Transform:
   - {fileID: 1999395635}
   - {fileID: 380824660}
   - {fileID: 1105488746}
+  - {fileID: 28648485}
+  - {fileID: 187845416}
   m_Father: {fileID: 1325992933}
   m_RootOrder: 0
 --- !u!114 &1017293611
@@ -2468,7 +2603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wiringNodePosition: {x: -168, y: 480}
   _threshold: 0.002
-  _delayToOff: 2
+  _delayToOff: 1
   _onEvent:
     m_PersistentCalls:
       m_Calls:
@@ -2736,10 +2871,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1017293610}
   m_RootOrder: 8
---- !u!4 &1258095216 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 400000, guid: 427d34d6970bfe74f99a26b6745ccbc5, type: 3}
-  m_PrefabInternal: {fileID: 1966165414}
 --- !u!1 &1320843108
 GameObject:
   m_ObjectHideFlags: 0
@@ -2780,7 +2911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f12cb6e816d52340928f63f1b02f1b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wiringNodePosition: {x: -168, y: 24}
+  _wiringNodePosition: {x: 312, y: -120}
   _responseCurve:
     serializedVersion: 2
     m_Curve:
@@ -3017,12 +3148,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1436285394}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.19999999, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 1258095216}
+  m_Father: {fileID: 758469497}
   m_RootOrder: 0
 --- !u!1 &1512042564
 GameObject:
@@ -3492,7 +3623,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wiringNodePosition: {x: -168, y: 720}
   _threshold: 0.002
-  _delayToOff: 2
+  _delayToOff: 1
   _onEvent:
     m_PersistentCalls:
       m_Calls:
