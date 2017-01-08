@@ -1999,6 +1999,21 @@ MonoBehaviour:
   _value: 0
   _graphic: {fileID: 249330702}
   _target: {fileID: 730390605}
+--- !u!1 &820123680 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100002, guid: 427d34d6970bfe74f99a26b6745ccbc5, type: 3}
+  m_PrefabInternal: {fileID: 1966165414}
+--- !u!114 &820123683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 820123680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30109a5fbe307e449aafa9f2eb1acaad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &865953131
 GameObject:
   m_ObjectHideFlags: 0
@@ -3496,6 +3511,21 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Klak.Wiring.NodeBase+FloatEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1 &1695886064 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100002, guid: 427d34d6970bfe74f99a26b6745ccbc5, type: 3}
+  m_PrefabInternal: {fileID: 1350693598}
+--- !u!114 &1695886067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1695886064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30109a5fbe307e449aafa9f2eb1acaad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1736948969
 GameObject:
   m_ObjectHideFlags: 0
