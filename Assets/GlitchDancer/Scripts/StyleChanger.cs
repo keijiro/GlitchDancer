@@ -26,8 +26,8 @@ namespace GlitchDancer
 
         [Space]
         [SerializeField] PostEffects _postEffects;
-        [SerializeField] Renderer _floor;
-        [SerializeField] Renderer _body;
+        [SerializeField] Renderer[] _bgObjects;
+        [SerializeField] Renderer[] _fgObjects;
         [SerializeField] Renderer[] _effects;
 
         #endregion
@@ -52,10 +52,13 @@ namespace GlitchDancer
             if (_scheme < 0.25f)
             {
                 // Set colors based on the hue set.
-                Camera.main.backgroundColor = Color.HSVToRGB(hue1, 0.86f, 0.95f);
+                Camera.main.backgroundColor = Color.HSVToRGB(hue1, 0.96f, 0.95f);
 
-                _floor.material.color = Color.HSVToRGB(hue2, 0.54f, 0.49f);
-                _body.material.color = Color.HSVToRGB(hue2, 0.80f, 0.51f);
+                foreach (var renderer in _bgObjects)
+                    renderer.material.color = Color.HSVToRGB(hue2, 0.95f, 0.2f);
+
+                foreach (var renderer in _fgObjects)
+                    renderer.material.color = Color.HSVToRGB(hue2, 0.9f, 0.5f);
 
                 foreach (var renderer in _effects)
                     renderer.material.SetFloat("_BaseHue", hue3);
@@ -65,8 +68,11 @@ namespace GlitchDancer
                 // Set placeholder colors.
                 Camera.main.backgroundColor = new Color(1, 0.6f, 0);
 
-                _floor.material.color = new Color(0, 0.5f, 0);
-                _body.material.color = new Color(0, 0, 0.5f);
+                foreach (var renderer in _bgObjects)
+                    renderer.material.color = new Color(0, 0.5f, 0);
+
+                foreach (var renderer in _bgObjects)
+                    renderer.material.color = new Color(0, 0, 0.5f);
 
                 foreach (var renderer in _effects)
                     renderer.material.SetFloat("_BaseHue", 0);
