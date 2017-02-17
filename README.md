@@ -20,4 +20,4 @@ License
 See [LICENSE.md](LICENSE.md) for details.
 
 You can use visuals generated with *GlitchDancer* freely for commercial and noncommercial use.
-You don't need a special permission to use it.
+You don't need a special permission to use them.
